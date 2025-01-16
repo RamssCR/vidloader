@@ -1,0 +1,134 @@
+@use 'init' as vars;
+@use 'mixins' as mixins;
+
+a{
+    text-decoration: none
+}
+
+.video-card{
+    display: grid;
+    grid-template-columns: 1fr 9fr 1fr;
+    gap: 1.3em;
+    width: fit-content;
+
+    .thumbnail{
+        width: 20em;
+        height: 10em;
+        background-color: vars.$headerColor;
+        border-radius: 0.3em;
+        display: flex;
+        align-items: end;
+        padding: 0.5em;
+        background-position: center center;
+        background-size: contain;
+        background-repeat: no-repeat;
+
+        &:hover{
+            cursor: pointer;
+        }
+
+        .duration{
+            display: block;
+            background-color: vars.$modalColor;
+            padding: 0.2em 0.4em;
+            border-radius: 0.2em;
+            color: vars.$textColor;
+        }
+    }
+
+    .video-info{
+        @include mixins.flexColumn(0.5em);
+        width: fit-content;
+        max-width: 45em;
+
+        &:hover{
+            cursor: pointer;
+        }
+
+        .category{
+            color: vars.$textHighLightedColor;
+            font-weight: 500;
+            font-size: 1.1em;
+        }
+
+        .video-title{
+            font-size: 1.4em;
+            font-weight: 600;
+            color: vars.$textColor;
+        }
+
+        .video-date{
+            font-size: 0.9em;
+            margin: -0.3em 0 0.5em 0;
+            filter: brightness(90%);
+            color: vars.$textColor;
+        }
+
+        .video-description{
+            font-size: 0.9em;
+            color: vars.$inputBorderColor;
+        }
+    }
+
+    .options{
+        display: flex;
+        justify-content: flex-end;
+        position: relative;
+
+        img{
+            width: 2.5em;
+            height: 2.5em;
+            transition: .2s;
+            padding: 0.5em;
+            border-radius: 50%;
+
+            &:hover{
+                cursor: pointer;
+                background-color: vars.$optionsBgColor;
+            }
+        }
+
+        .options-navbar{
+            position: absolute;
+            top: 4em;
+            right: 1.2em;
+            background-color: vars.$formColor;
+            @include mixins.flexColumn();
+            padding: 0.7em 1em;
+            min-width: 8.5em;
+            border-radius: 0.2em;
+
+            &::after{
+                content: '';
+                top: -1em;
+                right: 0;
+                position: absolute;
+                width: 0; 
+                height: 0; 
+                border-top: 1.5em solid transparent;
+                border-bottom: 1.5em solid transparent; 
+                border-right: 1.5em solid vars.$formColor; 
+            }
+
+            a, .options-btn{
+                color: vars.$textColor;
+                font-weight: 500;
+                font-size: 1em;
+                padding: 0.2em 0;
+                transition: .2s;
+
+                &:hover{
+                    cursor: pointer;
+                    color: vars.$textHighLightedColor;
+                    transform: scale(1.05);
+                }
+            }
+
+            .options-btn{
+                background-color: transparent;
+                border: none;
+                text-align: left;
+            }
+        }
+    }
+}

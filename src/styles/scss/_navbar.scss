@@ -1,0 +1,98 @@
+@use 'init' as vars;
+@use 'mixins' as mixins;
+
+.in-app__modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: vars.$modalColor;
+    display: flex;
+    justify-content: flex-end;
+    animation: fadeIn .15s linear;
+    z-index: 5;
+    
+    @keyframes fadeIn {
+        0%{
+            opacity: 0;
+        }
+
+        100%{
+            opacity: 1;
+        }
+    }
+
+    .in-app__navbar-container{
+        width: 20em;
+        padding: 2em 2em 2em 2.5em;
+        height: 100vh;
+        background-color: vars.$formColor;
+        @include mixins.flexColumn(2em);
+        align-items: end;
+        animation: slideIn .25s linear;
+        position: relative;
+        z-index: 6;
+
+        @keyframes slideIn {
+            0%{
+                transform: translateX(20em);
+            }
+
+            50%{
+                transform: translateX(20em);
+            }
+
+            100%{
+                transform: translateX(0);
+            }
+        }
+
+        .quit{
+            font-size: 2em;
+            font-weight: 600;
+
+            &:hover{
+                color: vars.$errorColor;
+                cursor: pointer;
+            }
+        }
+
+        .in-app__navbar{
+            width: 100%;
+            @include mixins.flexColumn(2em);
+        }
+
+        .in-app__navbar li{
+            list-style: none;
+        }
+
+        .in-app__navbar li a{
+            text-decoration: none;
+            color: vars.$textColor;
+            font-size: 1.3em;
+            font-weight: 500;
+            display: block;
+            transition: .2s;
+
+            &:hover{
+                color: vars.$textHighLightedColor;
+                transform: scale(1.05);
+            }
+        }
+    }
+
+    .slideOut{
+        animation: slideOut .4s linear;
+
+        @keyframes slideOut {
+            0%{
+                transform: translateX(0);
+            }
+
+            100%{
+                transform: translateX(80em);
+            }
+        }
+    }
+}

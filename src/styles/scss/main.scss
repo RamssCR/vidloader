@@ -1,0 +1,22 @@
+@use 'init' as vars;
+@use 'header';
+@use 'signer';
+@use 'inputError';
+@use 'navbar';
+@use 'dashboard';
+@use 'video';
+@use 'videoForm';
+@use 'viewVideo';
+@use 'footer';
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: vars.$mainFontFamily;
+}
+
+body{
+    background-color: vars.$bgColor;
+    color: vars.$textColor;
+}

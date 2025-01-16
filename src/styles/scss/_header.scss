@@ -1,0 +1,73 @@
+@use 'init' as vars;
+@use 'mixins' as mixins;
+
+@mixin anchors($bgColor, $textColor) {
+    display: block;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: 500;
+    color: $textColor;
+    background-color: $bgColor;
+    padding: 0.6em 1.8em;
+}
+
+.app-header{
+    background-color: vars.$headerColor;
+    @include mixins.flexRow();
+    justify-content: space-between;
+    padding: 1em 2em;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+    box-shadow: 0 0.3em 0.5em vars.$headerBoxShadow;
+
+    .app-header__title{
+        color: vars.$textHighLightedColor;
+        font-size: 2em;
+    }
+
+    .app-navbar{
+        @include mixins.flexRow(2em);
+    }
+
+    .app-navbar li{
+        list-style: none;
+    }
+
+    .app-navbar li .btn-login{
+        @include anchors(vars.$buttonColor, vars.$textColor);
+
+        &:hover{
+            filter: brightness(105%);
+        }
+    }
+
+    .app-navbar li .btn-signup{
+        @include anchors(vars.$textColor, vars.$buttonColor);
+
+        &:hover{
+            filter: brightness(105%);
+        }
+    }
+
+    .app-navbar .loggedIn-container{
+        @include mixins.flexRow(2em);
+
+        .btn-logout{
+            @include anchors(vars.$textColor, vars.$buttonColor);
+            transition: .2s;
+
+            &:hover{
+                transform: translateY(-0.2em);
+                filter: brightness(105%);
+            }
+        }
+
+        img{
+            width: 3em;
+            height: 3em;
+            cursor: pointer;
+        }
+    }
+}

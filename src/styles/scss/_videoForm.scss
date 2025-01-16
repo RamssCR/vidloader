@@ -1,0 +1,104 @@
+@use 'init' as vars;
+@use 'mixins' as mixins;
+
+.video-form{
+    background-color: vars.$headerColor;
+    width: 52em;
+    margin: 0 auto;
+    padding: 2em 2.5em;
+    @include mixins.flexColumn(2em);
+
+    .in-app__form-title{
+        padding: 0 0 0.3em 0.3em;
+        border-bottom: 4px solid vars.$textColor;
+        font-weight: 600;
+    }
+
+    .in-app__inputs-group{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 1em;
+    }
+
+    .input-group{
+        @include mixins.flexColumn(0.4em);
+
+        label{
+            font-size: 1.1em;
+            color: vars.$textHighLightedColor;
+        }
+
+        input[type="text"],
+        select,
+        textarea{
+            font-size: 0.9em;
+            padding: 0.5em 0.8em;
+            background-color: transparent;
+            border: 1px solid vars.$headerColor;
+            outline: none;
+            border-bottom: 3px solid vars.$inputBorderColor;
+            color: vars.$textColor;
+            border-radius: 0.3em 0.3em 0 0;
+        }
+
+        select option{
+            color: vars.$bgColor;
+        }
+
+        input[type="text"]::placeholder,
+        textarea::placeholder{
+            color: vars.$placeholderColor;
+        }
+
+        textarea{
+            resize: none;
+        }
+
+        input[type="file"]{
+            border: 1px solid vars.$placeholderColor;
+            width: 100%;
+            border-radius: 0.3em;
+            overflow: hidden;
+        }
+
+        input::file-selector-button{
+            border: none;
+            border-right: 1px solid vars.$placeholderColor;
+            background-color: transparent;
+            color: vars.$textColor;
+            font-weight: 600;
+            filter: brightness(95%);
+            overflow: hidden;
+            font-size: 1.1em;
+            padding: 0.9em 0.8em;
+
+            &:hover{
+                filter: brightness(105%);
+                cursor: pointer;
+            }
+        }
+    }
+
+    input[type="submit"]{
+        font-size: 1.2em;
+        padding: 0.5em;
+        border: none;
+        border-radius: 0.3em;
+        background-color: vars.$buttonColor;
+        color: vars.$textColor;
+        font-weight: 500;
+        text-transform: uppercase;
+
+        &:hover{
+            filter: brightness(105%);
+            cursor: pointer;
+        }
+    }
+
+    .percentage{
+        text-align: center;
+        display: block;
+        font-size: 1.2em;
+        margin-top: -0.9em;
+    }
+}

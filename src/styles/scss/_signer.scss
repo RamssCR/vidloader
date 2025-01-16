@@ -1,0 +1,81 @@
+@use 'init' as vars;
+@use 'mixins' as mixins;
+
+.auth-container{
+    margin-top: 5em;
+    min-height: 90vh;
+    display: grid;
+    place-items: center;
+
+    .auth-form{
+        background-color: vars.$formColor;
+        width: 35em;
+        padding: 2em 2.5em;
+        @include mixins.flexColumn(1em);
+
+        .auth-container__title, .auth-container__form-title{
+            color: vars.$textHighLightedColor;
+        }
+
+        .auth-container__form-title{
+            font-size: 2.5em;
+        }
+
+        .presentation-text{
+            margin: -0.7em 0 1em 0;
+        }
+
+        .input-group{
+            @include mixins.flexColumn(0.5em);
+        }
+
+        .input-group .input-label{
+            color: vars.$textHighLightedColor;
+        }
+
+        .input-group input[type="text"],
+        .input-group input[type="password"]{
+            font-size: 0.95em;
+            background-color: vars.$inputColor;
+            padding: 0.5em 0.8em;
+            border: 1px solid vars.$inputBorderColor;
+            outline: none;
+        }
+
+        input[type="submit"]{
+            background-color: vars.$buttonColor;
+            color: vars.$textColor;
+            text-transform: uppercase;
+            padding: 0.5em 0;
+            font-size: 1.2em;
+            font-weight: 600;
+            border: none;
+            margin-top: 0.4em;
+
+            &:hover{
+                cursor: pointer;
+                filter: brightness(103%);
+            }
+        }
+
+        .input-group .input-error{
+            color: vars.$errorColor;
+            font-size: 0.8em;
+            margin-top: -0.3em;
+            font-weight: 500;
+        }
+
+        .change-signer{
+            text-align: center;
+
+            a{
+                color: vars.$textHighLightedColor;
+                text-decoration: none;
+
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}

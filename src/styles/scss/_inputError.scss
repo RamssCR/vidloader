@@ -1,0 +1,29 @@
+@use 'init' as vars;
+@use 'mixins' as mixins;
+
+.error-list{
+    @include mixins.flexColumn(0.4em);
+}
+.error-display{
+    background-color: vars.$errorBgColor;
+    border-left: 3px solid vars.$errorColor;
+    padding: 0.4em 0.6em;
+    @include mixins.flexRow(0.4em);
+
+    .mark{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: vars.$errorColor;
+        padding: 0.3em;
+        font-size: 1.2em;
+        border-radius: 50%;
+        font-weight: 600;
+        width: 1.5em;
+        height: 1.5em;
+    }
+
+    .error{
+        color: vars.$errorColor;
+    }
+}

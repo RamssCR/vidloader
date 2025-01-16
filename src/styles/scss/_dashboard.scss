@@ -1,0 +1,96 @@
+@use 'init' as vars;
+@use 'mixins' as mixins;
+
+.app-container{
+    margin: 5em auto 0 auto;
+    min-height: 90vh;
+    width: 1500px;
+    padding: 2em 0;
+    @include mixins.flexColumn(1em);
+
+    @media only screen and (width <= 1300px) {
+        width: 1115px;
+    }
+
+    .in-app__title{
+        font-weight: 300;
+        font-size: 3em;
+    }
+
+    .dashboard__user-data{
+        @include mixins.flexRow();
+        justify-content: space-between;
+        background-color: vars.$headerColor;
+        padding: 1em 2em;
+        border-radius: 0.5em;
+        position: relative;
+        z-index: 1;
+
+        .user-data__user-profile{
+            @include mixins.flexRow(1em);
+
+            img{
+                width: 5em;
+                height: 5em;
+                border: 2px solid vars.$textColor;
+                padding: 0.6em;
+                border-radius: 50%;
+            }
+
+            .username{
+                font-size: 1.7em;
+            }
+        }
+
+        .create-new{
+            display: flex;
+            text-decoration: none;
+            justify-content: center;
+            align-items: center;
+            width: 1.8em;
+            height: 1.8em;
+            font-size: 2.5em;
+            font-weight: 700;
+            background-color: vars.$buttonColor;
+            border-radius: 50%;
+            color: vars.$textColor;
+            transition: .2s;
+            position: static;
+            z-index: 1;
+
+            &:hover{
+                box-shadow: 0 0 0.5em vars.$textHighLightedColor;
+                transform: rotateZ(90deg);
+            }
+
+            .more{
+                margin-top: -0.1em;
+            }
+        }
+
+        .newVideo{
+            position: absolute;
+            font-size: 1.5em;
+            font-weight: 600;
+            opacity: 0;
+            z-index: 0;
+            right: 1em;
+            transition: .2s;
+        }
+
+        .moved{
+            right: 5em;
+            opacity: 1;
+        }
+    }
+
+    .in-app__subtitle{
+        margin: 1em 0;
+        font-weight: 400;
+        font-size: 2em;
+    }
+
+    .videos-container{
+        @include mixins.flexColumn(1.5em);
+    }
+}
